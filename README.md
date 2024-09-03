@@ -12,8 +12,6 @@ The main objective of this repository is to:
 
 ## Files
 
-- **LICENSE**: This repository uses the GPL-3.0 license.
-- **README.md**: A brief overview and introduction to the repository.
 - **ezarr_compose.yaml**: A Docker Compose file specifically configured for setting up the 'ezarr' environment, which includes the necessary services and dependencies.
 
 ## Getting Started
