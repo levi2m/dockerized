@@ -1,0 +1,110 @@
+#
+#    This is a file to be used for hosting your on .arr stack.
+#    My file uses /ext as default for the host volumes mount-point, as normally I use an LXC with a GPU Passthrough to host the docker and a second volume mounted to /ext.
+#
+
+version: "3.1"
+services:
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=13001
+      - PGID=13000
+      - UMASK=002
+      - TZ=America/SaoPaulo
+    volumes:
+      - /ext/plex/config/sonarr-config:/config
+      - /ext/plex/data:/data
+      - /ext/plex/data/torrents:/data/torrents
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=13002
+      - PGID=13000
+      - UMASK=002
+      - TZ=America/SaoPaulo
+    volumes:
+      - /ext/plex/config/radarr-config:/config
+      - /ext/plex/data:/data
+      - /ext/plex/data/torrents:/data/torrents
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    environment:
+      - PUID=13013
+      - PGID=13000
+      - TZ=America/Sao_Paulo
+    volumes:
+      - /ext/plex/config/bazarr-config:/config
+      - /ext/plex/data:/data
+      - /ext/plex/data/torrents:/data/torrents
+    ports:
+      - 6767:6767
+    restart: unless-stopped
+  overseerr:
+    image: sctx/overseerr:latest
+    container_name: overseerr
+    environment:
+      - PUID=13009
+      - PGID=13000
+      - UMASK=002
+      - TZ=America/Sao_Paulo
+    volumes:
+      - /ext/plex/config/overseerr-config:/app/config
+    ports:
+      - 5055:5055
+    restart: unless-stopped
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:develop
+    container_name: prowlarr
+    environment:
+      - PUID=13006
+      - PGID=13000
+      - UMASK=002
+      - TZ=America/Sao_Paulo
+    volumes:
+      - /ext/plex/config/prowlarr-config:/config
+    ports:
+      - 9696:9696
+    restart: unless-stopped
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID=13010
+      - PGID=13000
+      - VERSION=docker
+      - PLEX_CLAIM=
+    volumes:
+      - /ext/plex/config/plex-config:/config
+      - /ext/plex/data:/data
+    restart: unless-stopped
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=13007
+      - PGID=13000
+      - UMASK=002
+      - TZ=America/Sao_Paulo
+      - WEBUI_PORT=8080
+    volumes:
+      - /ext/plex/config/qbittorrent-config:/config
+      - /ext/plex/data/torrents:/data/torrents
+    ports:
+      - 8080:8080
+      - 6881:6881
+      - 6881:6881/udp
+    restart: unless-stopped
+x-dockge:
+  urls: []
+networks: {}
