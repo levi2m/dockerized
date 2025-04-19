@@ -51,7 +51,7 @@ services:
       - 6767:6767
     restart: unless-stopped
   overseerr:
-    image: sctx/overseerr:latest
+    image: lscr.io/linuxserver/overseerr:latest
     container_name: overseerr
     environment:
       - PUID=13009
