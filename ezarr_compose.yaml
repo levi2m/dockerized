@@ -20,6 +20,7 @@ services:
     ports:
       - 8989:8989
     restart: unless-stopped
+  
   radarr:
     image: lscr.io/linuxserver/radarr:latest
     container_name: radarr
@@ -35,6 +36,7 @@ services:
     ports:
       - 7878:7878
     restart: unless-stopped
+  
   bazarr:
     image: lscr.io/linuxserver/bazarr:latest
     container_name: bazarr
@@ -50,6 +52,7 @@ services:
     ports:
       - 6767:6767
     restart: unless-stopped
+  
   overseerr:
     image: lscr.io/linuxserver/overseerr:latest
     container_name: overseerr
@@ -63,6 +66,7 @@ services:
     ports:
       - 5055:5055
     restart: unless-stopped
+  
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:develop
     container_name: prowlarr
@@ -76,6 +80,7 @@ services:
     ports:
       - 9696:9696
     restart: unless-stopped
+  
   plex:
     image: lscr.io/linuxserver/plex:latest
     container_name: plex
@@ -90,6 +95,7 @@ services:
       - /ext/plex/config/plex-config:/config
       - /ext/plex/data:/data
     restart: unless-stopped
+  
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
     container_name: qbittorrent
@@ -107,6 +113,3 @@ services:
       - 6881:6881
       - 6881:6881/udp
     restart: unless-stopped
-x-dockge:
-  urls: []
-networks: {}
