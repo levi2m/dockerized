@@ -12,8 +12,11 @@ The main objective of this repository is to:
 
 ## Files
 
-- **ezarr_compose.yaml**: A Docker Compose file specifically configured for setting up the 'ezarr' environment, which includes the necessary services and dependencies.
-- **mine_compose.yaml**: A Docker Compose file tailored for my needs for creation and modification of the base minecraft server launcher by Itzg.
+- **ezarr.yaml**: A Docker Compose file specifically configured for setting up the 'ezarr' environment, which includes the necessary services and dependencies.
+- **mine_server.yaml**: A Docker Compose file tailored for my needs for creation and modification of the base minecraft server launcher by Itzg.
+- **nextcloud.yaml**: A Docker Compose file for deploying Nextcloud with a MariaDB database backend, providing a self-hosted file sync and share solution.
+- **pulse.yaml**: A Docker Compose file for running Pulse, a monitoring tool with persistent configuration and data storage.
+- **beszel.yaml**: A Docker Compose file for deploying Beszel, a lightweight containerized application with persistent data storage.
 
 ## Getting Started
 
