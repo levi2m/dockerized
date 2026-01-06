@@ -13,6 +13,7 @@ The main objective of this repository is to:
 ## Files
 
 - **ezarr_compose.yaml**: A Docker Compose file specifically configured for setting up the 'ezarr' environment, which includes the necessary services and dependencies.
+- **mine_compose.yaml**: A Docker Compose file tailored for my needs for creation and modification of the base minecraft server launcher by Itzg.
 
 ## Getting Started
 
