@@ -1,0 +1,26 @@
+services:
+  pulse-server:
+    # Build context commented out - using pre-built image from Docker Hub
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: rcourtman/pulse:latest # Use the pre-built image from Docker Hub
+    container_name: pulse
+    restart: unless-stopped
+    user: 1000:1000 # Run as standard user, not system service accounts
+    ports:
+      - 7655:7655
+    env_file:
+      - .env
+    volumes:
+      # Persist configuration data to avoid losing settings on container recreation
+      # Mount a persistent volume for configuration files
+      - pulse_config:/usr/src/app/config
+      # Persist metrics data, alert rules, and thresholds
+      - pulse_data:/usr/src/app/data
+volumes:
+  pulse_config:
+    driver: local
+  pulse_data:
+    driver: local
+networks: {}
